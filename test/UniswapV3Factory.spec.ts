@@ -22,7 +22,7 @@ describe('UniswapV3Factory', () => {
   let poolBytecode: string
   const fixture = async () => {
     const factoryFactory = await ethers.getContractFactory('UniswapV3Factory')
-    return (await factoryFactory.deploy()) as UniswapV3Factory
+    return (await factoryFactory.deploy(wallet.address)) as UniswapV3Factory
   }
 
   let loadFixture: ReturnType<typeof createFixtureLoader>

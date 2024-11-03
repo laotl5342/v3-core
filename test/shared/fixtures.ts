@@ -15,7 +15,8 @@ interface FactoryFixture {
 
 async function factoryFixture(): Promise<FactoryFixture> {
   const factoryFactory = await ethers.getContractFactory('UniswapV3Factory')
-  const factory = (await factoryFactory.deploy()) as UniswapV3Factory
+  const owner = (await ethers.getSigners())[0]
+  const factory = (await factoryFactory.deploy(owner.address)) as UniswapV3Factory
   return { factory }
 }
 
